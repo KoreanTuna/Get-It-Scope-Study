@@ -1,10 +1,15 @@
 # get_it_scope_study
 
-# 문제 상황
+# 연구가 필요한 문제 상황
 Home에서 user데이터를 fetching해서 viewModel ValueNotifier에 값을 할당해준뒤,<br>
 서브라우트인 Detail 화면으로 push로 이동하고 다시 Pop했을때 user데이터가 loading으로 초기화되어있다.<br>
 viewModel을 injectable(factory)로 만들어둔 상태이긴 하나, 서브라우트로 이동했을때, 기존 Route의 메모리가 유지되고 있을 것이라 예상했으나<br>
 그렇지 않고 메모리에서 제거되고, 초기화돼서 발생하는 이슈!<br>
+
+
+<image src="https://github.com/user-attachments/assets/70f4b94b-7e0e-4b7b-92c1-8fc55c2dddd7" alt="Issue" width="330">
+<br>
+
 
 <br>
 ### HomeViewModel 코드
