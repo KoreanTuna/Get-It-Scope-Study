@@ -59,10 +59,12 @@ abstract class GoRouterModule {
           GoRoute(
             path: RouterPath.home,
             name: RouterPath.home,
-            pageBuilder: (context, state) => buildFadeTransitionPage(
-              state: state,
-              child: HomeScreen(viewModel: locator<HomeViewModel>()),
-            ),
+            pageBuilder: (context, state) {
+              return buildFadeTransitionPage(
+                state: state,
+                child: HomeScreen(viewModel: locator<HomeViewModel>()),
+              );
+            },
             routes: [
               GoRoute(
                 path: RouterPath.detail,

@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:get_it_scope_study/common/data/models/user_model.dart';
 import 'package:get_it_scope_study/common/data/repository/user_repository.dart';
+import 'package:get_it_scope_study/common/util/logger.dart';
 import 'package:get_it_scope_study/common/util/result.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:injectable/injectable.dart';
 
 @injectable
 class HomeViewModel extends ChangeNotifier {
-  HomeViewModel(this._userRepository);
+  HomeViewModel(this._userRepository) {
+    logger.d('HomeViewModel initialized');
+    fetchUser();
+  }
 
   final UserRepository _userRepository;
 

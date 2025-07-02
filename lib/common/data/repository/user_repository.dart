@@ -5,7 +5,7 @@ import 'package:injectable/injectable.dart';
 @lazySingleton
 class UserRepository {
   Future<Result<UserModel>> getUser() async {
-    await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 1));
     return Result.ok(UserModel(id: '1'));
   }
 }

@@ -16,15 +16,6 @@ class HomeScreen extends BaseScreen {
     /// 사용자 정보 상태 Listener
     useListenable(viewModel.userState);
 
-    /// 사용자 정보 Fetching
-    useEffect(() {
-      WidgetsBinding.instance.addPostFrameCallback((_) async {
-        await viewModel.fetchUser();
-      });
-
-      return null;
-    }, []);
-
     return viewModel.userState.value.when(
       data: (user) => Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -32,7 +23,7 @@ class HomeScreen extends BaseScreen {
           Center(child: Text('Home, userID: ${user.id}')),
           TextButton(
             onPressed: () {
-              context.pushNamed(RouterPath.detail);
+              context.goNamed(RouterPath.detail);
             },
             child: Text('GO TO DETAIL'),
           ),
