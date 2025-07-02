@@ -29,7 +29,7 @@ class HomeScreen extends BaseScreen {
       data: (user) => Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Center(child: Text('Hello, ${user.id}')),
+          Center(child: Text('Home, userID: ${user.id}')),
           TextButton(
             onPressed: () {
               context.pushNamed(RouterPath.detail);
