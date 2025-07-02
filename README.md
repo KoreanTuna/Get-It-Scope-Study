@@ -85,5 +85,7 @@ class HomeViewModel extends ChangeNotifier {
 리빌드가 잘 된다.
 <br>
 하지만, 유지되어도 되는 State를 다시 fetching해야 되는 문제는 여전히 존재한다.<br>
+물론 Data Layer에서 cache를 만들어서 관리하는 식으로 하면 어느정도 해결도 가능..<br>
+
 State를 ViewModel에서 관리하지 않고, Screen에서 useState로 관리하면 해결될것 같지만,<br>
 특정 데이터는 ViewModel에서 중앙관리를 하고 싶을수도있을 것 같아서 고민...
