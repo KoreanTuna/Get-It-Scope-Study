@@ -12,6 +12,7 @@ viewModel을 injectable(factory)로 만들어둔 상태이긴 하나, 서브라�
 
 
 <br>
+
 ### HomeViewModel 코드
 
 ``` dart
