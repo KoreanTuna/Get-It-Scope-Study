@@ -6,8 +6,8 @@ Home에서 user데이터를 fetching해서 viewModel ValueNotifier에 값을 할
 viewModel을 injectable(factory)로 만들어둔 상태이긴 하나, 서브라우트로 이동했을때, 기존 Route의 메모리가 유지되고 있을 것이라 예상했으나<br>
 그렇지 않고 메모리에서 제거되고, 초기화돼서 발생하는 이슈!<br>
 
+<img width="330" alt="onboard" src="[https://github.com/user-attachments/assets/bcb87d64-965d-4773-a4a3-f443958a1283](https://github.com/user-attachments/assets/70f4b94b-7e0e-4b7b-92c1-8fc55c2dddd7)" />
 
-<image src="https://github.com/user-attachments/assets/70f4b94b-7e0e-4b7b-92c1-8fc55c2dddd7" alt="Issue" width="330">
 <br>
 
 
