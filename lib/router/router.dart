@@ -1,4 +1,5 @@
 import 'package:flutter/widgets.dart';
+import 'package:get_it_scope_study/environment/getit/getit.config.dart';
 import 'package:get_it_scope_study/environment/getit/getit.dart';
 import 'package:get_it_scope_study/presentation/detail/detail_screen.dart';
 import 'package:get_it_scope_study/presentation/detail/view_model/detail_view_model.dart';
@@ -60,6 +61,9 @@ abstract class GoRouterModule {
             path: RouterPath.home,
             name: RouterPath.home,
             pageBuilder: (context, state) {
+              if (!locator.hasScope('home')) {
+                locator.initHomeScope();
+              }
               return buildFadeTransitionPage(
                 state: state,
                 child: HomeScreen(viewModel: locator<HomeViewModel>()),
@@ -70,6 +74,9 @@ abstract class GoRouterModule {
                 path: RouterPath.detail,
                 name: RouterPath.detail,
                 pageBuilder: (context, state) {
+                  if (!locator.hasScope('detail')) {
+                    locator.initDetailScope();
+                  }
                   return buildFadeTransitionPage(
                     state: state,
                     child: DetailScreen(viewModel: locator<DetailViewModel>()),

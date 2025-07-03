@@ -32,14 +32,34 @@ extension GetItInjectableX on _i174.GetIt {
     final gh = _i526.GetItHelper(this, environment, environmentFilter);
     final goRouterModule = _$GoRouterModule();
     gh.factory<_i222.SplashViewModel>(() => _i222.SplashViewModel());
-    gh.factory<_i658.DetailViewModel>(() => _i658.DetailViewModel());
     gh.factory<_i451.RouterObserver>(() => _i451.RouterObserver());
     gh.singleton<_i583.GoRouter>(() => goRouterModule.router);
     gh.lazySingleton<_i10.UserRepository>(() => _i10.UserRepository());
-    gh.factory<_i821.HomeViewModel>(
-      () => _i821.HomeViewModel(gh<_i10.UserRepository>()),
-    );
     return this;
+  }
+
+  // initializes the registration of home-scope dependencies inside of GetIt
+  _i174.GetIt initHomeScope({_i174.ScopeDisposeFunc? dispose}) {
+    return _i526.GetItHelper(this).initScope(
+      'home',
+      dispose: dispose,
+      init: (_i526.GetItHelper gh) {
+        gh.factory<_i821.HomeViewModel>(
+          () => _i821.HomeViewModel(gh<_i10.UserRepository>()),
+        );
+      },
+    );
+  }
+
+  // initializes the registration of detail-scope dependencies inside of GetIt
+  _i174.GetIt initDetailScope({_i174.ScopeDisposeFunc? dispose}) {
+    return _i526.GetItHelper(this).initScope(
+      'detail',
+      dispose: dispose,
+      init: (_i526.GetItHelper gh) {
+        gh.factory<_i658.DetailViewModel>(() => _i658.DetailViewModel());
+      },
+    );
   }
 }
 

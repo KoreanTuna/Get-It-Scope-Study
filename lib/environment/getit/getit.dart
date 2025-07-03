@@ -7,4 +7,6 @@ GetIt locator = GetIt.instance;
 @injectableInit
 Future<void> setUpGetItConfig() async {
   await locator.init();
+  locator.initHomeScope();
+  locator.initDetailScope();
 }
