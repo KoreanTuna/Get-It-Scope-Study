@@ -85,7 +85,32 @@ class HomeViewModel extends ChangeNotifier {
 리빌드가 잘 된다.
 <br>
 하지만, 유지되어도 되는 State를 다시 fetching해야 되는 문제는 여전히 존재한다.<br>
-물론 Data Layer에서 cache를 만들어서 관리하는 식으로 하면 어느정도 해결도 가능..<br>
-
+물론 Data Layer에서 cache를 만들어서 관리하는 식으로 하면 어느정도 해결도 가능..<br><br>
 State를 ViewModel에서 관리하지 않고, Screen에서 useState로 관리하면 해결될것 같지만,<br>
-특정 데이터는 ViewModel에서 중앙관리를 하고 싶을수도있을 것 같아서 고민...
+특정 데이터는 ViewModel에서 중앙관리를 하고 싶을수도있을 것 같아서 고민...<br>
+
+# 고민한 방법 1-2 : useEffect 의존성에 viewModel.userState 넣어주기
+
+``` dart
+class HomeScreen extends BaseScreen {
+  const HomeScreen({super.key, required this.viewModel});
+
+  final HomeViewModel viewModel;
+
+  @override
+  Widget buildScreen(BuildContext context) {
+    /// 사용자 정보 상태 Listener
+    useListenable(viewModel.userState);
+
+    useEffect(() {
+      /// 사용자 정보 초기화
+      logger.d('HomeScreen useEffect');
+      viewModel.fetchUser();
+      return () {};
+    }, [viewModel.userState]);
+```
+
+<br>
+viewModel이 새로 생성될때마다 userState ValueNotifier 변수도 새로운 객체를 할당받게 되니,<br>
+그때마다 useEffect가 실행되어, pop됐을때 자동으로 refetching이 되게끔 할수는있다..<br>
+하지만 이것도 고민1과 동일하게 필요없는 refetching이 발생하는 이슈는 여전히 있다.
